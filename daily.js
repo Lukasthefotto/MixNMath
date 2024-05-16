@@ -3,24 +3,34 @@ let difficulty = 'Easy';
 let usedDigits = new Set(); 
 
 
-function setupGame() {
+function startGame() {
     difficulty = 'Daily';
-    if (difficulty === 'Daily') {
+    if (difficulty == 'Daily') {
         setupDailyMode();
     }
-
     document.querySelector('.clear-button').onclick = clearExpression;
     document.querySelector('.submit-button').onclick = checkAnswer;
     document.addEventListener('keydown', handleKeyPress);
 
 }
+timerInterval = setInterval(function () {
+    const now = new Date();
+    const resetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); 
+    const timeUntilReset = resetTime - now;
+    let hours = Math.floor(timeUntilReset / 3600000);
+    let minutes = Math.floor((timeUntilReset % 3600000) / 60000);
+    let seconds = Math.floor((timeUntilReset % 60000) / 1000);
 
+    let formattedTime =
+        (hours < 10 ? "0" : "") + hours + ":" +
+        (minutes < 10 ? "0" : "") + minutes + ":" +
+        (seconds < 10 ? "0" : "") + seconds;
+    document.getElementById('timer2').innerText = `Time Until Reset: \n${formattedTime}`; 
+}, 1000);
 function setupDailyMode() {
-    document.querySelector('.difficulty-buttons').style.display = 'none'; // Hide difficulty buttons
+    //document.querySelector('.navbar').style.display = 'none'; // Hide difficulty buttons
     updateTargetNumberAndDisplay();
-
     document.getElementById('challenge').style.display = 'block';
-
     scheduleDailyReset();
 }
 
@@ -40,18 +50,22 @@ function scheduleDailyReset() {
         scheduleDailyReset();
     }, timeUntilReset);
 }
-
+function pseudoRNG(n){
+    let nn=(n*(n/53) * 589) % 31415926;
+    nn=(nn/793)%1;
+    return Math.floor(nn * 891) + 100; 
+}
 function generateTargetNumberForDaily() {
     const today = new Date();
     const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-    Math.seedrandom(seed); 
-    return Math.floor(Math.random() * 891) + 100; 
+    xseed=pseudoRNG(seed);
+    return xseed; 
 }
 
 let targetNumber = generateTargetNumberForDaily(); 
 
 function updateTargetDisplay() {
-    document.getElementById('challenge').innerText = `Make ${targetNumber}`;
+    document.getElementById('challenge').innerText = `Daily Challege!\n Make ${targetNumber}`;
 }
 
 function setDifficulty(newDifficulty) {
@@ -220,3 +234,4 @@ function handleKeyPress(event) {
         clearExpression();
     }
 }
+
