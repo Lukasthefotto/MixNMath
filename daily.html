@@ -161,6 +161,19 @@
     <button class="button clear-button" onclick="clearExpression()">Clear</button>
     <button class="button submit-button" onclick="checkAnswer()">Submit</button>
     <div id="result" class="result-display"></div>
+    <div class="timer-container">
+        <div id="timer2" class="timer-element2">Time Until Reset:</div>
+        <button id="startButton2" class="start-button2" onclick="startGame()">Start Game</button>
+        <button id="pauseButton" class="button clear-button" style="display: none;" onclick="toggleTimer()">Next Game</button>
+        <div class="score-container">
+            <div id="scoreDisplay" class="score-display">Score: 0</div>
+        </div>
+        <div class="question-mark" onclick="toggleHelpPopup()">
+            <img src="ques.png" alt="ques" width="30" height="30">
+            </div>
+    </div>
+    <div id="resettime" class="reset-time"> 
+    </div>
 </div>
 </div>
 <div class="question-mark" onclick="toggleHelpPopup()">
