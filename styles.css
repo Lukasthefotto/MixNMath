@@ -203,6 +203,21 @@ body {
     margin-right:250px;
     font-size: xx-large;
 }
+.resettime{
+    
+}
+.time-display {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 50px;
+    max-width: 100px;
+    background-color: #111;
+    border-radius: 25px;
+    padding: 40px;
+    font-size: xx-large;
+}
+
 .input-display:hover {
  border-style: solid;
  border-width: 5px;
@@ -360,9 +375,29 @@ body {
     transition: background-color 0.3s ease;
     margin-top: 10px;
 }
+.start-button2 {
+    background-color: #68AE6F;
+    font-family: 'Lexend', sans-serif;
+    filter: drop-shadow(-5px 0px 0px #48804E);
+    font-weight: 800;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-.start-button:hover {
+.start-button2:hover {
     background-color: #5B9760;
+}
+
+.score-container{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #login {
